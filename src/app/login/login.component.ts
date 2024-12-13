@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   imports: [CommonModule, FormsModule],
-  standalone: true
+
 })
 export class LoginComponent {
   username: string = '';

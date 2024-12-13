@@ -9,7 +9,7 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './categorias.component.html',
   styleUrls: ['./categorias.component.css'],
   imports: [CommonModule, FormsModule],  // Importando os módulos diretamente no componente
-  standalone:true
+ 
 })
 export class CategoriasComponent implements OnInit {
   categorias: any[] = [];
