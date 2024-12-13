@@ -1,0 +1,11 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+input, button {
+    margin: 10px 0;
+    padding: 10px;
+}
