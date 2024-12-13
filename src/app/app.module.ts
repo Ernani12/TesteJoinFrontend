@@ -17,14 +17,17 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
+    
   ],
   imports: [
+    LoginComponent,
+    CategoriasComponent,
+    AppRoutingModule,
     AppComponent, 
     BrowserModule,
-    LoginComponent,
+    FormsModule, 
     CommonModule,
     FormsModule,
-    CategoriasComponent,
     RouterModule.forRoot(appRoutes) // Configuração de rotas
   ],
   providers: [provideHttpClient()],
