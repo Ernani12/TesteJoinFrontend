@@ -1,0 +1,57 @@
+<div class="container">
+    <h1 class="text-center my-4">Editar Produto</h1>
+  
+    <!-- Formulário para editar produto -->
+    <form (submit)="atualizarProduto()" class="mb-4 shadow p-3 rounded bg-light">
+      <div class="form-group mb-3">
+        <label for="nome">Nome:</label>
+        <input
+          type="text"
+          id="nome"
+          class="form-control"
+          [(ngModel)]="produto.nome"
+          name="nome"
+          placeholder="Digite o nome do produto"
+          required
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label for="descricao">Descrição:</label>
+        <input
+          type="text"
+          id="descricao"
+          class="form-control"
+          [(ngModel)]="produto.descricao"
+          name="descricao"
+          placeholder="Digite a descrição do produto"
+          required
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label for="preco">Preço:</label>
+        <input
+          type="number"
+          id="preco"
+          class="form-control"
+          [(ngModel)]="produto.preco"
+          name="preco"
+          placeholder="Digite o preço do produto"
+          required
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label for="dataCriacao">Data de Criação:</label>
+        <input
+          type="text"
+          id="dataCriacao"
+          class="form-control"
+          [(ngModel)]="produto.dataCriacao"
+          name="dataCriacao"
+          placeholder="Digite a data (ex: 01/01/2024)"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-success w-100">Atualizar Produto</button>
+    </form>
+  </div>
+  
