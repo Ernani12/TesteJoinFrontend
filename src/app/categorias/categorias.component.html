@@ -58,25 +58,31 @@
         <tr *ngFor="let categoria of categorias">
           <td class="text-center align-middle">{{ categoria.id }}</td>
           <td class="align-middle">
+            <!-- Tornar o campo nome readonly -->
             <input
               [(ngModel)]="categoria.nome"
               class="form-control"
               name="nome"
+              readonly
             />
           </td>
           <td class="align-middle">
+            <!-- Tornar o campo descrição readonly -->
             <input
               [(ngModel)]="categoria.descricao"
               class="form-control"
               name="descricao"
+              readonly
             />
           </td>
           <td class="align-middle">
+            <!-- Tornar o campo dataCriacao readonly -->
             <input
               [(ngModel)]="categoria.dataCriacao"
               class="form-control"
               name="dataCriacao"
               placeholder="Digite a data (ex: 01/01/2024)"
+              readonly
             />
           </td>
           <td class="text-center align-middle">
