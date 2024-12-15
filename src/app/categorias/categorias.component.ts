@@ -13,6 +13,8 @@ export class CategoriasComponent implements OnInit {
   categorias: any[] = []; // Lista de categorias
   novaCategoria = { nome: '', descricao: '', dataCriacao: '' }; // Categoria para adicionar ou editar
   apiUrl = 'http://localhost:8080/api/categorias/listar'; // Endpoint da API
+  apiUrlS = 'http://localhost:8080/api/categorias/SalvarC'; // Endpoint da API
+
 
   constructor(private http: HttpClient) {}
 
@@ -34,7 +36,7 @@ export class CategoriasComponent implements OnInit {
 
   // Adicionar nova categoria
   adicionarCategoria(): void {
-    this.http.post(this.apiUrl, this.novaCategoria).subscribe({
+    this.http.post(this.apiUrlS, this.novaCategoria).subscribe({
       next: (response) => {
         this.carregarCategorias(); // Recarregar lista após adicionar
         this.novaCategoria = { nome: '', descricao: '', dataCriacao: '' }; // Limpar o formulário
