@@ -1,14 +1,36 @@
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .table {
-    margin-top: 20px;
-  }
-  
-  button {
-    margin-right: 5px;
-  }
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+form {
+  background-color: #f9f9f9;
+}
+
+form .form-group label {
+  font-weight: bold;
+}
+
+.table {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.table thead th {
+  text-transform: uppercase;
+}
+
+.table tbody td {
+  vertical-align: middle;
+}
+
+.btn-group .btn {
+  margin-right: 5px;
+}
+
+.btn-group .btn:last-child {
+  margin-right: 0;
+}
+
   
