@@ -1,97 +1,110 @@
 /* Corpo da página */
 body {
-    background-color: #a3c9f1; /* Azul claro como fundo da página */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Garante que a página ocupe toda a altura da tela */
+  background-color: #f0f8ff; /* Azul muito claro, profissional e vibrante */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Garante que a página ocupe toda a altura da tela */
+}
+
+/* Container principal do login */
+.login-container {
+  background-color: #46ec46; /* Verde claro anterior */
+  color: #ffffff; /* Branco para o texto */
+  padding: 30px;
+  border-radius: 8px;
+  width: 400px; /* Aumenta a largura do formulário */
+  margin: 0 auto;
+  text-align: center;
+  position: absolute; /* Para centralizar em relação à tela */
+  top: 50%; /* Centraliza verticalmente */
+  left: 60%; /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta para a verdadeira centralização */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra suave ao redor do formulário */
+}
+
+/* Estilo da imagem */
+/* Estilo da imagem */
+.login-logo img {
+  width: 180px; /* Ajuste o tamanho conforme necessário */
+  height: auto;
+  position: absolute;
+  top: 35%;
+  left: 20%;
+  z-index: 10;
+  animation: spin 3s linear infinite; /* Animação de giro */
+}
+
+/* Definição da animação */
+@keyframes spin {
+  from {
+    transform: rotateY(0deg); /* Começa no ângulo 0 */
   }
-  
-  /* Container principal do login */
-  .login-container {
-    background-color: #46ec46; /* Verde claro */
-    color: #003366; /* Azul escuro para o texto */
-    padding: 30px;
-    border-radius: 8px;
-    width: 400px; /* Aumenta a largura do formulário */
-    margin: 0 auto;
-    text-align: center;
-    position: absolute; /* Para centralizar em relação à tela */
-    top: 50%; /* Centraliza verticalmente */
-    left: 60%; /* Centraliza horizontalmente */
-    transform: translate(-50%, -50%); /* Ajusta para a verdadeira centralização */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra suave ao redor do formulário */
+  to {
+    transform: rotateY(360deg); /* Gira até 360 graus */
   }
-  
-  /* Estilo da imagem */
-  .login-logo img {
-    width: 150px; /* Ajuste o tamanho conforme necessário */
-    height: auto;
-    position: absolute; /* Usando position absolute para posicionar fora do container */
-    top: 35%; /* Ajuste a posição vertical da imagem */
-    left: 20%; /* Ajuste a posição horizontal da imagem */
-    z-index: 10; /* Garante que a imagem fique sobre outros elementos */
-  }
-  
-  /* Estilo de fundo adicional */
-  .fundo {
-    background-color: #eafefe; /* Azul claro */
-    width: 100%;
-    height: 100vh; /* Garante que ocupe toda a tela */
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  
-  /* Título do formulário */
-  h2 {
-    margin-bottom: 20px;
-    font-size: 26px; /* Aumenta o tamanho do título */
-    font-weight: bold;
-    color: #003366; /* Azul escuro */
-  }
-  
-  /* Estilo dos campos de entrada */
-  form div {
-    margin-bottom: 20px; /* Aumenta o espaçamento entre os campos */
-  }
-  
-  input {
-    width: 100%;
-    padding: 12px; /* Aumenta o preenchimento interno dos inputs */
-    border-radius: 4px;
-    border: 1px solid #003366; /* Borda azul escuro */
-    font-size: 16px; /* Aumenta o tamanho da fonte */
-    color: #003366; /* Cor do texto do input */
-  }
-  
-  input:focus {
-    outline: none;
-    border-color: #0066cc; /* Azul mais claro na borda ao focar no input */
-  }
-  
-  /* Estilo do botão de envio */
-  button {
-    background-color: #003366; /* Azul escuro para o botão */
-    color: white; /* Texto branco no botão */
-    padding: 12px 20px; /* Aumenta o padding do botão */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%; /* Faz o botão ocupar toda a largura do formulário */
-  }
-  
-  button:hover {
-    background-color: #005bb5; /* Azul mais claro ao passar o mouse */
-  }
-  
-  /* Mensagem de erro */
-  .error-message {
-    color: red;
-    font-size: 14px;
-  }
-  
+}
+/* Estilo de fundo adicional */
+.fundo {
+  background-color: #eaf7fa; /* Azul claro pastel */
+  width: 100%;
+  height: 100vh; /* Garante que ocupe toda a tela */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Título do formulário */
+h2 {
+  margin-bottom: 20px;
+  font-size: 28px; /* Aumenta o tamanho do título */
+  font-weight: bold;
+  color: #ffffff; /* Branco para o título */
+}
+
+/* Estilo dos campos de entrada */
+form div {
+  margin-bottom: 20px; /* Aumenta o espaçamento entre os campos */
+}
+
+input {
+  width: 100%;
+  padding: 12px; /* Aumenta o preenchimento interno dos inputs */
+  border-radius: 4px;
+  border: 1px solid #cccccc; /* Borda cinza suave */
+  font-size: 16px; /* Aumenta o tamanho da fonte */
+  color: #333333; /* Cor do texto do input */
+  background-color: #ffffff; /* Fundo branco para contraste */
+}
+
+input:focus {
+  outline: none;
+  border-color: #ffa500; /* Laranja brilhante ao focar no input */
+  box-shadow: 0 0 5px rgba(255, 165, 0, 0.8); /* Efeito de brilho */
+}
+
+/* Estilo do botão de envio */
+button {
+  background-color: #0056b3; /* Azul profissional e vibrante */
+  color: white; /* Texto branco no botão */
+  padding: 12px 20px; /* Aumenta o padding do botão */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%; /* Faz o botão ocupar toda a largura do formulário */
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #003d80; /* Azul mais escuro ao passar o mouse */
+}
+
+/* Mensagem de erro */
+.error-message {
+  color: #ff0000; /* Vermelho brilhante */
+  font-size: 14px;
+}
