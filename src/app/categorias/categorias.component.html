@@ -40,6 +40,12 @@
       />
     </div>
     <button type="submit" class="btn btn-primary w-100">Adicionar Categoria</button>
+ 
+        <!-- Mensagem de erro -->
+        <div *ngIf="mensagemErro" class="alert alert-danger text-center mt-3">
+          {{ mensagemErro }}
+        </div>
+ 
   </form>
 
   <!-- Tabela de categorias -->
@@ -63,7 +69,8 @@
               [(ngModel)]="categoria.nome"
               class="form-control"
               name="nome"
-              readonly
+              disabled
+              
             />
           </td>
           <td class="align-middle">
@@ -72,7 +79,7 @@
               [(ngModel)]="categoria.descricao"
               class="form-control"
               name="descricao"
-              readonly
+              disabled
             />
           </td>
           <td class="align-middle">
@@ -82,7 +89,7 @@
               class="form-control"
               name="dataCriacao"
               placeholder="Digite a data (ex: 01/01/2024)"
-              readonly
+              disabled
             />
           </td>
           <td class="text-center align-middle">

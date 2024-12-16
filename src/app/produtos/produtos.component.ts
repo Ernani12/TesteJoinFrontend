@@ -15,6 +15,7 @@ export class ProdutoComponent implements OnInit {
   produtos: any[] = [];
   categorias: any[] = [];
   novoProduto: Produto = { nome: '', descricao: '', preco: 0, categoriaId: 0 };
+  produto: Produto = { nome: '', descricao: '', preco: 0, categoriaId: 0 };
   apiListarUrl = 'http://localhost:8080/api/produtos/listar';
   apiSalvarUrl = 'http://localhost:8080/api/produtos/salvarP';
   apiDeletarUrl = 'http://localhost:8080/api/produtos/deleteP';
@@ -23,7 +24,7 @@ export class ProdutoComponent implements OnInit {
   idgetcatid = 'http://localhost:8080/api/produtos/{id}/categoria/id';
 
   mensagemErro: string | null = null;
-
+  produtoOriginal: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -117,10 +118,6 @@ export class ProdutoComponent implements OnInit {
     });
   }
 
-  editarProduto(id: number): void {
-    this.router.navigate([`/editar-produto/${id}`]);
-  }
-
   removerProduto(id: number): void {
     const url = `${this.apiDeletarUrl}/${id}`;
     this.http.delete(url).subscribe({
@@ -130,6 +127,30 @@ export class ProdutoComponent implements OnInit {
       },
       error: (error) => {
         console.error(`Erro ao remover produto com ID ${id}:`, error);
+      },
+    });
+  }
+
+
+  atualizarProduto(): void {
+    
+  
+    // Certifica que os campos de categoria não sejam alterados
+    const produtoAtualizado = {
+      ...this.novoProduto, // Copia os campos do novo produto
+      categoriaId: this.produtoOriginal.categoriaId, // Mantém o ID da categoria original
+      categoriaNome: this.produtoOriginal.categoriaNome // Mantém o nome da categoria original
+    };
+  
+    // Realiza a requisição PUT para atualizar o produto
+    this.http.put(`${this.apiSalvarUrl}/${this.novoProduto.id}`, produtoAtualizado).subscribe({
+      next: (response) => {
+        console.log('Produto atualizado com sucesso:', response);
+        this.carregarProdutos();
+        this.novoProduto = { nome: '', descricao: '', preco: 0, categoriaId: 0 };
+      },
+      error: (error) => {
+        console.error('Erro ao atualizar produto:', error);
       },
     });
   }

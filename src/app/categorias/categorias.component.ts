@@ -18,6 +18,9 @@ export class CategoriasComponent implements OnInit {
   apiSalvarUrl = 'http://localhost:8080/api/categorias/SalvarC'; // Endpoint para salvar
   apiDeletarUrl = 'http://localhost:8080/api/categorias/deleteC'; // Endpoint para deletar
 
+  mensagemErro: string | null = null;
+
+
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
@@ -38,6 +41,23 @@ export class CategoriasComponent implements OnInit {
 
   // Adicionar nova categoria
   adicionarCategoria(): void {
+
+  // Limpa mensagem de erro
+  this.mensagemErro = null;
+
+  if (!this.novaCategoria.nome) {
+    this.mensagemErro = 'O campo Nome é obrigatório.';
+    return;
+  }
+  if (!this.novaCategoria.descricao) {
+    this.mensagemErro = 'O campo Descrição é obrigatório.';
+    return;
+  }
+  if (!this.novaCategoria.dataCriacao) {
+    this.mensagemErro = 'O campo Data de Criação é obrigatório.';
+    return;
+  }
+
     this.http.post(this.apiSalvarUrl, this.novaCategoria).subscribe({
       next: (response) => {
         console.log('Categoria adicionada com sucesso:', response);
