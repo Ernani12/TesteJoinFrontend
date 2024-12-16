@@ -73,4 +73,6 @@ export class CategoriasComponent implements OnInit {
     navegarParaProdutos(): void {
       this.router.navigate(['/produtos']); // Redirecionar para a página de produtos
     }
+
+  
 }

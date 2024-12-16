@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router'; // Importando o Router
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Produto } from './produto.modle'; // Importando o modelo de Produto
+import { Produto } from './produto.modle';
 
 @Component({
   selector: 'app-produtos',
@@ -12,26 +12,52 @@ import { Produto } from './produto.modle'; // Importando o modelo de Produto
   imports: [FormsModule, CommonModule]
 })
 export class ProdutoComponent implements OnInit {
-  produtos: any[] = []; // Lista de produtos
-  categorias: any[] = []; // Lista de categorias
-  novoProduto: Produto = { nome: '', descricao: '', preco: 0, categoriaId: 0 }; // Produto para adicionar ou editar
-  apiListarUrl = 'http://localhost:8080/api/produtos/listar'; // Endpoint para listar
-  apiSalvarUrl = 'http://localhost:8080/api/produtos/salvarP'; // Endpoint para salvar
-  apiDeletarUrl = 'http://localhost:8080/api/produtos/deleteP'; // Endpoint para deletar
-  apiListarCategoriasUrl = 'http://localhost:8080/api/categorias/listar'; // Endpoint para listar categorias
+  produtos: any[] = [];
+  categorias: any[] = [];
+  novoProduto: Produto = { nome: '', descricao: '', preco: 0, categoriaId: 0 };
+  apiListarUrl = 'http://localhost:8080/api/produtos/listar';
+  apiSalvarUrl = 'http://localhost:8080/api/produtos/salvarP';
+  apiDeletarUrl = 'http://localhost:8080/api/produtos/deleteP';
+  apiListarCategoriasUrl = 'http://localhost:8080/api/categorias/listar';
+  idgetcatname = 'http://localhost:8080/api/produtos/{id}/categoria/nome';
+  idgetcatid = 'http://localhost:8080/api/produtos/{id}/categoria/id';
 
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-    this.carregarProdutos();
-    this.carregarCategorias();
+    this.carregarProdutos();  // Carregar produtos
+    this.carregarCategorias();  // Carregar categorias
   }
 
-  // Carregar produtos do endpoint
   carregarProdutos(): void {
     this.http.get<any[]>(this.apiListarUrl).subscribe({
       next: (response) => {
         this.produtos = response;
+
+        // Após carregar os produtos, buscar o nome e o ID da categoria de cada produto
+        this.produtos.forEach(produto => {
+          const produtoId = produto.id;
+
+          // Buscar nome da categoria
+          this.http.get<any>(this.idgetcatname.replace('{id}', produtoId.toString())).subscribe({
+            next: (categoriaResponse) => {
+              produto.categoriaNome = categoriaResponse.nome; // Atribuir nome da categoria
+            },
+            error: (error) => {
+              console.error('Erro ao carregar nome da categoria:', error);
+            }
+          });
+
+          // Buscar ID da categoria
+          this.http.get<any>(this.idgetcatid.replace('{id}', produtoId.toString())).subscribe({
+            next: (categoriaResponse) => {
+              produto.categoriaId = categoriaResponse.id; // Atribuir ID da categoria
+            },
+            error: (error) => {
+              console.error('Erro ao carregar ID da categoria:', error);
+            }
+          });
+        });
       },
       error: (error) => {
         console.error('Erro ao carregar produtos:', error);
@@ -39,7 +65,6 @@ export class ProdutoComponent implements OnInit {
     });
   }
 
-  // Carregar categorias do endpoint
   carregarCategorias(): void {
     this.http.get<any[]>(this.apiListarCategoriasUrl).subscribe({
       next: (response) => {
@@ -52,11 +77,12 @@ export class ProdutoComponent implements OnInit {
   }
 
   adicionarProduto(): void {
+    this.novoProduto.categoriaId = this.novoProduto.categoriaId || 0;
     this.http.post(this.apiSalvarUrl, this.novoProduto).subscribe({
       next: (response) => {
         console.log('Produto adicionado com sucesso:', response);
-        this.carregarProdutos(); // Recarregar a lista de produtos
-        this.novoProduto = { nome: '', descricao: '', preco: 0, categoriaId: 0 }; // Limpar o formulário
+        this.carregarProdutos();
+        this.novoProduto = { nome: '', descricao: '', preco: 0, categoriaId: 0 };
       },
       error: (error) => {
         console.error('Erro ao adicionar produto:', error);
@@ -65,54 +91,19 @@ export class ProdutoComponent implements OnInit {
   }
 
   editarProduto(id: number): void {
-    this.router.navigate([`/editar-produto/${id}`]); // Navegar para a página de edição
+    this.router.navigate([`/editar-produto/${id}`]);
   }
 
-  // Remover produto
   removerProduto(id: number): void {
-    const url = `${this.apiDeletarUrl}/${id}`; // Usar o endpoint correto
+    const url = `${this.apiDeletarUrl}/${id}`;
     this.http.delete(url).subscribe({
       next: () => {
         console.log(`Produto com ID ${id} removido com sucesso.`);
-        this.carregarProdutos(); // Recarregar lista após remoção
+        this.carregarProdutos();
       },
       error: (error) => {
         console.error(`Erro ao remover produto com ID ${id}:`, error);
       },
     });
   }
-
-  getCategoriaNome(categoriaId: number | null): string {
-    if (!categoriaId) return 'Sem categoria';  // Se não houver categoria, retorna "Sem categoria"
-  
-    // Verificar se já carregamos a categoria
-    const categoria = this.categorias.find((cat) => cat.id === categoriaId);
-    if (categoria) {
-      return categoria.nome;
-    }
-  
-    // Caso a categoria não tenha sido encontrada, vamos buscar no servidor
-    this.buscarCategoriaPorId(categoriaId);
-    return 'Carregando...';  // Exibir uma mensagem enquanto carrega
-  }
-
-  buscarCategoriaPorId(categoriaId: number): void {
-    const url = `http://localhost:8080/api/categorias/listarid/${categoriaId}`; // Endpoint para buscar por ID
-    this.http.get<any>(url).subscribe({
-      next: (response) => {
-        // Atualiza a categoria na lista de categorias
-        const categoriaExistente = this.categorias.find(cat => cat.id === categoriaId);
-        if (categoriaExistente) {
-          categoriaExistente.nome = response.nome; // Atualiza o nome da categoria
-        } else {
-          this.categorias.push(response); // Se não existir, adiciona nova categoria
-        }
-      },
-      error: (error) => {
-        console.error('Erro ao buscar categoria:', error);
-      }
-    });
-  }
-  
-  
 }
