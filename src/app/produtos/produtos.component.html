@@ -1,92 +1,57 @@
 <div class="container">
-    <h1 class="text-center my-4">Gerenciamento de Produtos</h1>
-  
-    <form (submit)="adicionarProduto()" class="mb-4 shadow p-3 rounded bg-light">
-      <div class="form-group mb-3">
-        <label for="nome">Nome:</label>
-        <input
-          type="text"
-          id="nome"
-          class="form-control"
-          [(ngModel)]="novoProduto.nome"
-          name="nome"
-          placeholder="Digite o nome do produto"
-          required
-        />
-      </div>
-      <div class="form-group mb-3">
-        <label for="descricao">Descrição:</label>
-        <input
-          type="text"
-          id="descricao"
-          class="form-control"
-          [(ngModel)]="novoProduto.descricao"
-          name="descricao"
-          placeholder="Digite a descrição do produto"
-          required
-        />
-      </div>
-      <div class="form-group mb-3">
-        <label for="preco">Preço:</label>
-        <input
-          type="number"
-          id="preco"
-          class="form-control"
-          [(ngModel)]="novoProduto.preco"
-          name="preco"
-          placeholder="Digite o preço do produto"
-          required
-        />
-      </div>
-      <div class="form-group mb-3">
-        <label for="categoria">Categoria</label>
-        <select id="categoria" [(ngModel)]="novoProduto.categoriaId" name="categoriaId">
-          <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nome }}</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Adicionar Produto</button>
-    </form>
-  
-    <div class="table-responsive">
-      <table class="table table-hover table-striped table-bordered">
-        <thead class="table-dark">
-          <tr>
-            <th class="text-center">ID</th>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Preço</th>
-            <th>Categoria</th>
-            <th class="text-center">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let produto of produtos">
-            <td class="text-center align-middle">{{ produto.id }}</td>
-            <td class="align-middle">{{ produto.nome }}</td>
-            <td class="align-middle">{{ produto.descricao }}</td>
-            <td class="align-middle">R$ {{ produto.preco | number:'1.2-2' }}</td>
-            <td class="align-middle">
-                {{ getCategoriaNome(produto.categoriaId) }}
-              </td>
-            <td class="text-center align-middle">
-              <div class="btn-group">
-                <button
-                  class="btn btn-success btn-sm"
-                  (click)="editarProduto(produto.id)"
-                >
-                  Atualizar
-                </button>
-                <button
-                  class="btn btn-danger btn-sm"
-                  (click)="removerProduto(produto.id)"
-                >
-                  Remover
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <h1 class="text-center my-4">Gerenciamento de Produtos</h1>
+
+  <form (submit)="adicionarProduto()" class="mb-4 shadow p-3 rounded bg-light">
+    <div class="form-group mb-3">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" class="form-control" [(ngModel)]="novoProduto.nome" name="nome" placeholder="Digite o nome do produto" required />
     </div>
+    <div class="form-group mb-3">
+      <label for="descricao">Descrição:</label>
+      <input type="text" id="descricao" class="form-control" [(ngModel)]="novoProduto.descricao" name="descricao" placeholder="Digite a descrição do produto" required />
+    </div>
+    <div class="form-group mb-3">
+      <label for="preco">Preço:</label>
+      <input type="number" id="preco" class="form-control" [(ngModel)]="novoProduto.preco" name="preco" placeholder="Digite o preço do produto" required />
+    </div>
+    <div class="form-group mb-3">
+      <label for="categoria">Categoria</label>
+      <select id="categoria" [(ngModel)]="novoProduto.categoriaId" name="categoriaId" required>
+        <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nome }}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Adicionar Produto</button>
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th class="text-center">ID</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Preço</th>
+          <th>Categoria</th>
+          <th>C_id</th>
+          <th class="text-center">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtos">
+          <td class="text-center align-middle">{{ produto.id }}</td>
+          <td class="align-middle">{{ produto.nome }}</td>
+          <td class="align-middle">{{ produto.descricao }}</td>
+          <td class="align-middle">R$ {{ produto.preco | number:'1.2-2' }}</td>
+          <td class="align-middle">{{ produto.categoriaNome || 'Carregando...' }}</td>
+          <td class="align-middle">{{ produto.categoriaId || 'Carregando...' }}</td>
+          <td class="text-center align-middle">
+            <div class="btn-group">
+              <button class="btn btn-success btn-sm" (click)="editarProduto(produto.id)">Atualizar</button>
+              <button class="btn btn-danger btn-sm" (click)="removerProduto(produto.id)">Remover</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  
+</div>
