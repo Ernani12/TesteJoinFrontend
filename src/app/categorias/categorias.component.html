@@ -40,13 +40,12 @@
       />
     </div>
     <button type="submit" class="btn btn-primary w-100">Adicionar Categoria</button>
- 
-        <!-- Mensagem de erro -->
-        <div *ngIf="mensagemErro" class="alert alert-danger text-center mt-3">
-          {{ mensagemErro }}
-        </div>
- 
   </form>
+
+  <!-- Mensagem de erro -->
+  <div *ngIf="mensagemErro" class="alert alert-danger text-center mt-3">
+    {{ mensagemErro }}
+  </div>
 
   <!-- Tabela de categorias -->
   <div class="table-responsive">
@@ -64,17 +63,14 @@
         <tr *ngFor="let categoria of categorias">
           <td class="text-center align-middle">{{ categoria.id }}</td>
           <td class="align-middle">
-            <!-- Tornar o campo nome readonly -->
             <input
               [(ngModel)]="categoria.nome"
               class="form-control"
               name="nome"
               disabled
-              
             />
           </td>
           <td class="align-middle">
-            <!-- Tornar o campo descrição readonly -->
             <input
               [(ngModel)]="categoria.descricao"
               class="form-control"
@@ -83,23 +79,21 @@
             />
           </td>
           <td class="align-middle">
-            <!-- Tornar o campo dataCriacao readonly -->
             <input
               [(ngModel)]="categoria.dataCriacao"
               class="form-control"
               name="dataCriacao"
-              placeholder="Digite a data (ex: 01/01/2024)"
               disabled
             />
           </td>
           <td class="text-center align-middle">
             <div class="btn-group">
               <button
-                  class="btn btn-success btn-sm"
-                  (click)="editarCategoria(categoria.id)"
-                >
-                  Atualizar
-                </button>
+                class="btn btn-warning btn-sm"
+                (click)="editarCategoria(categoria.id)"
+              >
+                Atualizar
+              </button>
               <button
                 class="btn btn-danger btn-sm"
                 (click)="removerCategoria(categoria.id)"
@@ -112,7 +106,8 @@
       </tbody>
     </table>
   </div>
-    <!-- Botão abaixo da tabela para redirecionar para a página de produtos -->
+
+  <!-- Botão abaixo da tabela -->
   <div class="text-center mt-4">
     <button class="btn btn-secondary" (click)="navegarParaProdutos()">Ir para Produtos</button>
   </div>
