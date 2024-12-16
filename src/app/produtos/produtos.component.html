@@ -1,6 +1,9 @@
 <div class="container">
   <h1 class="text-center my-4">Gerenciamento de Produtos</h1>
 
+ 
+
+
   <form (submit)="adicionarProduto()" class="mb-4 shadow p-3 rounded bg-light">
     <div class="form-group mb-3">
       <label for="nome">Nome:</label>
@@ -21,6 +24,10 @@
       </select>
     </div>
     <button type="submit" class="btn btn-primary w-100">Adicionar Produto</button>
+       <!-- Mensagem de erro -->
+       <div *ngIf="mensagemErro" class="alert alert-danger text-center">
+        {{ mensagemErro }}
+      </div>
   </form>
 
   <div class="table-responsive">
@@ -53,5 +60,8 @@
         </tr>
       </tbody>
     </table>
+
   </div>
+  <button class="btn btn-secondary mb-4" (click)="voltarParaCategorias()">Voltar para Categorias</button>
+
 </div>
