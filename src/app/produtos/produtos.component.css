@@ -1,0 +1,178 @@
+/* Estilo do container principal */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff; /* Fundo branco para destacar o conteúdo */
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilo do formulário */
+form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Leve sombra para destacar */
+}
+
+form .form-group label {
+  font-weight: bold;
+  color: #333333; /* Cor mais forte para o texto do rótulo */
+}
+
+form input {
+  border: 1px solid #cccccc;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+form input:focus {
+  border-color: #0056b3; /* Azul mais vibrante */
+  box-shadow: 0 0 8px rgba(0, 86, 179, 0.3); /* Efeito de foco */
+  outline: none;
+}
+
+form button {
+  background-color: #0056b3;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; /* Botão ocupa toda a largura do formulário */
+}
+
+form button:hover {
+  background-color: #003d80; /* Azul mais escuro ao passar o mouse */
+  box-shadow: 0 3px 12px rgba(0, 61, 128, 0.3); /* Efeito de hover */
+}
+
+/* Estilo da tabela */
+.table {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  border: 1px solid #dee2e6; /* Bordas leves */
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden; /* Remove bordas extras */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.table thead th {
+  background-color: #000000; /* Preto */
+  color: #ffffff; /* Texto branco */
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+.table tbody td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f3f5; /* Destaque leve ao passar o mouse */
+}
+
+/* Estilo dos botões */
+.btn-group .btn {
+  margin-right: 5px;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-group .btn:last-child {
+  margin-right: 0;
+}
+
+/* Botão Adicionar */
+.btn-success {
+  background-color: #4da6ff; /* Azul mais claro */
+  border: none;
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  background-color: #3399ff;
+  box-shadow: 0 3px 10px rgba(51, 153, 255, 0.3); /* Sombra no hover */
+}
+
+/* Botão Atualizar */
+.btn-warning {
+  background-color: #ffc107 !important; /* Amarelo */
+  border: none !important;
+  color: #212529 !important;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800 !important;
+  box-shadow: 0 3px 10px rgba(224, 168, 0, 0.3) !important; /* Sombra no hover */
+}
+
+/* Botão Remover */
+.btn-danger {
+  background-color: #dc3545 !important; /* Vermelho */
+  border: none !important;
+  color: #ffffff !important;
+}
+
+.btn-danger:hover {
+  background-color: #c82333 !important;
+  box-shadow: 0 3px 10px rgba(200, 35, 51, 0.3) !important; /* Sombra no hover */
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  box-shadow: 0 3px 10px rgba(90, 98, 104, 0.3); /* Sombra no hover */
+}
+
+/* Mensagem de erro */
+.alert {
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.alert-danger {
+  background-color: #ffebee;
+  color: #c82333;
+  border: 1px solid #c82333;
+}
+
+/* Tooltip */
+input[title]:hover::after {
+  content: attr(title) !important;
+  position: absolute !important;
+  background-color: #333 !important;
+  color: #fff !important;
+  padding: 5px 10px !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.3s ease-in-out , visibility 0s linear 0.3s !important;
+}
+
+input[title]:hover::after {
+  opacity: 1 !important;
+  visibility: visible !important;
+  bottom: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-bottom: 10px !important;
+}

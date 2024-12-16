@@ -49,24 +49,24 @@
         
           <!-- Nome Editável -->
           <td class="align-middle">
-            <input [(ngModel)]="produto.nome" class="form-control form-control-sm" />
+            <input [(ngModel)]="produto.nome" class="form-control form-control-sm"  title="Edite o nome aqui"/>
           </td>
 
           <!-- Descrição Editável -->
           <td class="align-middle">
-            <input [(ngModel)]="produto.descricao" class="form-control form-control-sm" />
+            <input [(ngModel)]="produto.descricao" class="form-control form-control-sm"  title="Edite  Descricao aqui"/>
           </td>
 
           <!-- Preço Editável -->
           <td class="align-middle">
-            <input type="number" [(ngModel)]="produto.preco" class="form-control form-control-sm" />
+            <input type="number" [(ngModel)]="produto.preco" class="form-control form-control-sm"  title="Edite o preco aqui" />
           </td>
 
           <td class="align-middle">{{ produto.categoriaNome || 'Carregando...' }}</td>
           <td class="align-middle">{{ produto.categoriaId || 'Carregando...' }}</td>
           <td class="text-center align-middle">
             <div class="btn-group">
-              <button class="btn btn-success btn-sm" (click)="atualizarProduto()">Atualizar</button>
+              <button class="btn btn-warning btn-sm" (click)="atualizarProduto()">Atualizar</button>
               <button class="btn btn-danger btn-sm" (click)="removerProduto(produto.id)">Remover</button>
             </div>
           </td>
