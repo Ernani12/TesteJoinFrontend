@@ -53,5 +53,9 @@
       </div>
       <button type="submit" class="btn btn-success w-100">Atualizar Produto</button>
     </form>
+      <!-- Mensagem de erro -->
+      <div *ngIf="mensagemErro" class="alert alert-danger text-center">
+        {{ mensagemErro }}
+      </div>
   </div>
   

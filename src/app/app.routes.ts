@@ -11,7 +11,6 @@ export const routes: Routes = [
   { path: 'categorias', component: CategoriasComponent },  // Rota para Categorias
   { path: 'login', component: LoginComponent },
   { path: 'produtos', component: ProdutoComponent },  // Rota para Categorias
-
   { path: 'editar-categoria/:id', component: EditarCategoriaComponent },
   { path: 'editar-produto/:id', component: EditarProdutoComponent },
 

@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class EditarProdutoComponent implements OnInit {
   produto: any = { nome: '', descricao: '', preco: 0, dataCriacao: '' };
+  mensagemErro: string | null = null;
 
   // Usando ActivatedRoute para pegar os parâmetros da URL
   constructor(
@@ -44,6 +45,31 @@ export class EditarProdutoComponent implements OnInit {
   }
 
   atualizarProduto(): void {
+
+      // Limpa mensagem de erro
+  this.mensagemErro = null;
+
+  // Validações dos campos
+  if (!this.produto.nome) {
+    this.mensagemErro = 'O campo Nome é obrigatório.';
+    return;
+  }
+  if (!this.produto.descricao) {
+    this.mensagemErro = 'O campo Descrição é obrigatório.';
+    return;
+  }
+  if (!this.produto.preco || this.produto.preco <= 0) {
+    this.mensagemErro = 'O campo Preço deve ser maior que 0.';
+    return;
+  }
+  if (!this.produto.dataCriacao) {
+    this.mensagemErro = 'O campo Data de Criação é obrigatório.';
+    return;
+  }
+
+  console.log('Produto a ser atualizado:', this.produto);
+
+
     const url = `http://localhost:8080/api/produtos/updateP/${this.produto.id}`;
     this.http.put(url, this.produto).subscribe({
       next: (response) => {
