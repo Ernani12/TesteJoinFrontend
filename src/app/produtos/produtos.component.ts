@@ -22,6 +22,9 @@ export class ProdutoComponent implements OnInit {
   idgetcatname = 'http://localhost:8080/api/produtos/{id}/categoria/nome';
   idgetcatid = 'http://localhost:8080/api/produtos/{id}/categoria/id';
 
+  mensagemErro: string | null = null;
+
+
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
@@ -77,6 +80,30 @@ export class ProdutoComponent implements OnInit {
   }
 
   adicionarProduto(): void {
+
+     // Limpa mensagem de erro
+  this.mensagemErro = null;
+
+      // Validações dos campos
+  if (!this.novoProduto.nome) {
+    this.mensagemErro = 'O campo Nome é obrigatório.';
+    return;
+  }
+  if (!this.novoProduto.descricao) {
+    this.mensagemErro = 'O campo Descrição é obrigatório.';
+    return;
+  }
+  if (!this.novoProduto.preco || this.novoProduto.preco <= 0) {
+    this.mensagemErro = 'O campo Preço deve ser maior que 0.';
+    return;
+  }
+  if (!this.novoProduto.categoriaId) {
+    this.mensagemErro = 'O campo Categoria é obrigatório.';
+    return;
+  }
+
+  console.log('Produto a ser salvo:', this.novoProduto);
+
     this.novoProduto.categoriaId = this.novoProduto.categoriaId || 0;
     this.http.post(this.apiSalvarUrl, this.novoProduto).subscribe({
       next: (response) => {
@@ -105,5 +132,10 @@ export class ProdutoComponent implements OnInit {
         console.error(`Erro ao remover produto com ID ${id}:`, error);
       },
     });
+  }
+
+
+  voltarParaCategorias() {
+    this.router.navigate(['/categorias']); // Substitua '/categorias' pela rota correta
   }
 }
