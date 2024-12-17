@@ -1,5 +1,6 @@
 # 🚀 Aplicação Backend com Spring Boot, Angular e PostgreSQL no Docker
-# teste JoinTech
+
+# Teste Join tech
 
 ## Tecnologias Utilizadas
 
@@ -13,7 +14,7 @@
 
 ---
 
-## Passos para Configuração
+## 🚀 Passos para Configuração do Projeto
 
 ### 1. Instalação do Java 17
 
@@ -68,7 +69,6 @@ ng serve
 ### 8. Acessar a Aplicação
 
 ```bash
-Backend: http://localhost:8080
 Frontend: http://localhost:4200
 ```
 
@@ -85,4 +85,6 @@ passowrd
 mvn clean install
 ```
 
-    
+--------------------------------------------------------------------------------------------------------------------
+
+
