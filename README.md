@@ -80,4 +80,10 @@ user
 passowrd
 ```
 
+### 10. testes ou pode rodar os testes na mao
+
+```bash
+mvn clean install
+```
+
     
