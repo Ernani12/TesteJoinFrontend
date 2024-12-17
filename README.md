@@ -76,6 +76,8 @@ Frontend: http://localhost:4200
 ### 9. utilizar usuario e password para um usuario padrao login
 
 ```bash
-    user
-    passowrd
+user
+passowrd
+```
+
     
