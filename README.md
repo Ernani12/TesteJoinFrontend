@@ -1,59 +1,80 @@
-# Techapp
+# 🚀 Aplicação Backend com Spring Boot, Angular e PostgreSQL no Docker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
+## Tecnologias Utilizadas
 
-## Development server
+- **Java 17**
+- **Spring Boot**
+- **Angular**
+- **PostgreSQL**
+- **Docker**
+- **Apache Maven**
+- **Node.js** / **npm**
 
-To start a local development server, run:
+---
+
+## Passos para Configuração
+
+### 1. Instalação do Java 17
+
+Certifique-se de que o Java 17 esteja instalado em seu sistema. Para verificar a instalação, utilize:
+
+```bash
+  java -version
+```
+
+### 2 .Instalar Docker Desktop ou CLI (Linux)
+Baixe e instale o Docker para rodar o banco de dados PostgreSQL.
+
+Rodar PostgreSQL no Docker
+Execute o seguinte comando para inicializar o banco de dados:
+
+```bash
+    docker run --name postgres-crud -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=crud_db -p 5432:5432 -d postgres
+```
+### 3. Instalar Maven
+Certifique-se de ter o Maven instalado. Verifique com o comando:
+
+```bash
+mvn -v
+```
+
+### 4. Compilar e Rodar a Aplicação Spring Boot
+Execute os seguintes comandos na pasta do projeto:
+
+```bash
+mvn clean install
+mvn spring-boot:run
+```
+
+### 5. Instalar Angular CLI
+Se você ainda não possui o Angular CLI, instale com o comando:
+
+```bash
+npm install -g @angular/cli
+```
+### 6 Baixar Dependências do Frontend
+Na pasta do frontend Angular, execute:
+
+```bash
+npm install
+```
+
+### 7. Rodar o Frontend Angular
+Execute o seguinte comando para iniciar o servidor de desenvolvimento:
 
 ```bash
 ng serve
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 8. Acessar a Aplicação
 
 ```bash
-ng generate component component-name
+Backend: http://localhost:8080
+Frontend: http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 9. utilizar usuario e password para um usuario padrao login
 
 ```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    user
+    passowrd
+    
