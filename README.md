@@ -20,7 +20,7 @@
 Certifique-se de que o Java 17 esteja instalado em seu sistema. Para verificar a instalação, utilize:
 
 ```bash
-  java -version
+java -version
 ```
 
 ### 2 .Instalar Docker Desktop ou CLI (Linux)
@@ -30,7 +30,7 @@ Rodar PostgreSQL no Docker
 Execute o seguinte comando para inicializar o banco de dados:
 
 ```bash
-    docker run --name postgres-crud -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=crud_db -p 5432:5432 -d postgres
+docker run --name postgres-crud -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=crud_db -p 5432:5432 -d postgres
 ```
 ### 3. Instalar Maven
 Certifique-se de ter o Maven instalado. Verifique com o comando:
