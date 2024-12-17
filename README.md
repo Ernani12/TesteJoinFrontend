@@ -43,7 +43,6 @@ mvn -v
 Execute os seguintes comandos na pasta do projeto:
 
 ```bash
-mvn clean install
 mvn spring-boot:run
 ```
 
